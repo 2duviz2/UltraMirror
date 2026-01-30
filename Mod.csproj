@@ -2,7 +2,7 @@
 	<Import Project="Paths.props" />
 	
 	<PropertyGroup>
-		<AssemblyName>UltraNet</AssemblyName>
+		<AssemblyName>Mod</AssemblyName>
 		<Description>Description</Description>
 		<Version>0.0.1</Version>
 
@@ -18,6 +18,14 @@
 			https://nuget.bepinex.dev/v3/index.json
 		</RestoreAdditionalProjectSources>
 	</PropertyGroup>
+	
+	<ItemGroup>
+	  <None Remove="Assets\ultramirror.bundle" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\ultramirror.bundle" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<!-- Nuget Packages -->
@@ -27,6 +35,30 @@
 		<!-- Assemblies via Managed -->
 		<Reference Include="Assembly-CSharp :3">
 			<HintPath>$(ManagedPath)\Assembly-CSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="com.rlabrecque.steamworks.net">
+		  <HintPath>Mirror\com.rlabrecque.steamworks.net.dll</HintPath>
+		</Reference>
+		<Reference Include="kcp2k">
+		  <HintPath>Mirror\kcp2k.dll</HintPath>
+		</Reference>
+		<Reference Include="Mirror">
+		  <HintPath>Mirror\Mirror.dll</HintPath>
+		</Reference>
+		<Reference Include="Mirror.Authenticators">
+		  <HintPath>Mirror\Mirror.Authenticators.dll</HintPath>
+		</Reference>
+		<Reference Include="Mirror.Components">
+		  <HintPath>Mirror\Mirror.Components.dll</HintPath>
+		</Reference>
+		<Reference Include="Mirror.Examples">
+		  <HintPath>Mirror\Mirror.Examples.dll</HintPath>
+		</Reference>
+		<Reference Include="Mirror.Transports">
+		  <HintPath>Mirror\Mirror.Transports.dll</HintPath>
+		</Reference>
+		<Reference Include="Mono.Security">
+		  <HintPath>Mirror\Mono.Security.dll</HintPath>
 		</Reference>
 		<Reference Include="Plog meow">
 			<HintPath>$(ManagedPath)\plog.dll</HintPath>
@@ -46,6 +78,27 @@
 		<Reference Include="Unity.ResourceManager OwO">
 			<HintPath>$(ManagedPath)\Unity.ResourceManager.dll</HintPath>
 		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Mirror\Mirror.Authenticators.dll">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Mirror\Mirror.Components.dll">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Mirror\Mirror.dll">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Mirror\Mirror.Examples.dll">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Mirror\Mirror.Transports.dll">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Mirror\Mono.Security.dll">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 	<Target Name="PreBuild" BeforeTargets="Build">
