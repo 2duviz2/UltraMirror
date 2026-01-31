@@ -1,6 +1,8 @@
 namespace UltraMirror;
 
 using BepInEx;
+using GameConsole;
+using GameConsole.Commands;
 using HarmonyLib;
 using Mirror;
 using UnityEngine;
@@ -30,22 +32,14 @@ public class Plugin : BaseUnityPlugin
         networkManager = g.GetComponent<NetworkManager>();
         DontDestroyOnLoad(g);
 
+        RegisterCommands();
+
         //SteamAPI.Init();
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            StartHostOnScene("uk_construct");
-            Logger.LogInfo("Started hosting...");
-        }
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            networkManager.StartClient();
-            Logger.LogInfo("Started client...");
-        }
+        
     }
 
     public static T Ass<T>(string path)
@@ -53,7 +47,7 @@ public class Plugin : BaseUnityPlugin
         return Addressables.LoadAssetAsync<T>((object)path).WaitForCompletion();
     }
 
-    public void StartHostOnScene(string sceneName)
+    public static void StartHostOnScene(string sceneName)
     {
         Addressables.LoadSceneAsync(sceneName, LoadSceneMode.Single).Completed += handle =>
         {
@@ -72,6 +66,25 @@ public class Plugin : BaseUnityPlugin
                 LogError("Failed to load scene: " + sceneName);
             }
         };
+    }
+
+    public static void CreateLobby()
+    {
+        StartHostOnScene("uk_construct");
+        LogInfo("Hosting lobby...");
+    }
+
+    public static void JoinLobby(string ip)
+    {
+        networkManager.networkAddress = ip;
+        networkManager.StartClient();
+        LogInfo("Joining lobby...");
+    }
+
+    public static void RegisterCommands()
+    {
+        Console.Instance.RegisterCommand(new CreateLobbyCommand());
+        Console.Instance.RegisterCommand(new JoinLobbyCommand());
     }
 
     public static void LogInfo(object msg) { instance.Logger.LogInfo(msg); }
