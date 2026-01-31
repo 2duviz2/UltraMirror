@@ -33,8 +33,6 @@ public class Plugin : BaseUnityPlugin
         DontDestroyOnLoad(g);
 
         RegisterCommands();
-
-        //SteamAPI.Init();
     }
 
     public void Update()

@@ -21,10 +21,46 @@
 	
 	<ItemGroup>
 	  <None Remove="Assets\ultramirror.bundle" />
+	  <None Remove="Mirror\com.rlabrecque.steamworks.net.dll" />
+	  <None Remove="Mirror\FizzySteamworks.dll" />
+	  <None Remove="Mirror\kcp2k.dll" />
+	  <None Remove="Mirror\Mirror.Authenticators.dll" />
+	  <None Remove="Mirror\Mirror.BouncyCastle.Cryptography.dll" />
+	  <None Remove="Mirror\Mirror.Components.dll" />
+	  <None Remove="Mirror\Mirror.dll" />
+	  <None Remove="Mirror\Mirror.Examples.dll" />
+	  <None Remove="Mirror\Mirror.Transports.dll" />
+	  <None Remove="Mirror\Mono.Security.dll" />
+	  <None Remove="Mirror\SimpleWebTransport.dll" />
+	  <None Remove="Mirror\Telepathy.dll" />
 	</ItemGroup>
 	
 	<ItemGroup>
 	  <EmbeddedResource Include="Assets\ultramirror.bundle" />
+	  <EmbeddedResource Include="Mirror\com.rlabrecque.steamworks.net.dll" />
+	  <EmbeddedResource Include="Mirror\FizzySteamworks.dll" />
+	  <EmbeddedResource Include="Mirror\kcp2k.dll" />
+	  <EmbeddedResource Include="Mirror\Mirror.Authenticators.dll">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Mirror\Mirror.BouncyCastle.Cryptography.dll" />
+	  <EmbeddedResource Include="Mirror\Mirror.Components.dll">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Mirror\Mirror.dll">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Mirror\Mirror.Examples.dll">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Mirror\Mirror.Transports.dll">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Mirror\Mono.Security.dll">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Mirror\SimpleWebTransport.dll" />
+	  <EmbeddedResource Include="Mirror\Telepathy.dll" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -78,27 +114,6 @@
 		<Reference Include="Unity.ResourceManager OwO">
 			<HintPath>$(ManagedPath)\Unity.ResourceManager.dll</HintPath>
 		</Reference>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="Mirror\Mirror.Authenticators.dll">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Mirror\Mirror.Components.dll">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Mirror\Mirror.dll">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Mirror\Mirror.Examples.dll">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Mirror\Mirror.Transports.dll">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Mirror\Mono.Security.dll">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </None>
 	</ItemGroup>
 
 	<Target Name="PreBuild" BeforeTargets="Build">
